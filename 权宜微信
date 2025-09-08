@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="这是一个基础的HTML框架">
+    <meta name="keywords" content="HTML, 框架, 基础">
+    <meta name="author" content="你的名字">
+    
+    <!-- 外部资源 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- 页面标题 -->
+    <title>权宜微信公众号</title>
+    
+    <!-- 自定义样式 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
+    
+    <!-- Tailwind 配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        accent: '#8B5CF6',
+                        dark: '#1F2937',
+                        light: '#F3F4F6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-light text-dark antialiased">
+    <!-- 页面加载动画 -->
+    <div id="loader" class="fixed inset-0 flex items-center justify-center bg-white z-50 transition-opacity duration-500">
+        <div class="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+    </div>
+
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full top-0 z-40 transition-all duration-300 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-2">
+                <i class="fa fa-comment text-primary text-2xl"></i>
+                <span class="text-xl font-bold text-primary"> 权宜微信公众号</span>
+            </a>
+            
+            <!-- 桌面导航 -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="font-medium hover:text-primary transition-colors">首页</a>
+                <a href="#features" class="font-medium hover:text-primary transition-colors">功能</a>
+                <a href="#about" class="font-medium hover:text-primary transition-colors">关于</a>
+                <a href="#contact" class="font-medium hover:text-primary transition-colors">联系</a>
+            </nav>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-dark hover:text-primary transition-colors">
+                <i class="fa fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t animate-fadeIn">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="#home" class="font-medium py-2 hover:text-primary transition-colors">首页</a>
+                <a href="#features" class="font-medium py-2 hover:text-primary transition-colors">功能</a>
+                <a href="#about" class="font-medium py-2 hover:text-primary transition-colors">关于</a>
+                <a href="#contact" class="font-medium py-2 hover:text-primary transition-colors">联系</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main>
+        <!-- 英雄区域 -->
+        <section id="home" class="pt-28 pb-20 md:pt-40 md:pb-32 bg-gradient-to-br from-primary/5 to-accent/5">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-10 md:mb-0">
+                        <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-shadow mb-6">
+                            权宜微信<br><span class="text-primary">公众号</span>
+                        </h1>
+                        <p class="text-lg text-gray-600 mb-8 max-w-lg">
+                            这是一个完整的HTML5框架，包含响应式设计、动画效果和现代UI组件，可作为你下一个项目的起点。
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#features" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                                查看功能
+                            </a>
+                            <a href="#contact" class="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary/5 transition-all">
+                                联系我们
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://picsum.photos/600/400" alt="HTML框架展示图" class="rounded-xl shadow-2xl w-full h-auto transform hover:scale-[1.02] transition-transform duration-300">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 功能区域 -->
+        <section id="features" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">核心功能</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">这个HTML框架包含了现代网页开发所需的各种功能和组件</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 功能卡片1 -->
+                    <div class="bg-light rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100 transform hover:-translate-y-1 duration-300">
+                        <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fa fa-mobile-alt text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">响应式设计</h3>
+                        <p class="text-gray-600">自适应各种屏幕尺寸，从移动设备到桌面电脑都能提供良好的用户体验。</p>
+                    </div>
+                    
+                    <!-- 功能卡片2 -->
+                    <div class="bg-light rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100 transform hover:-translate-y-1 duration-300">
+                        <div class="w-14 h-14 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fa fa-paint-brush text-secondary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">现代UI设计</h3>
+                        <p class="text-gray-600">采用现代设计语言，包含精美的卡片、按钮和表单元素，提升视觉体验。</p>
+                    </div>
+                    
+                    <!-- 功能卡片3 -->
+                    <div class="bg-light rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100 transform hover:-translate-y-1 duration-300">
+                        <div class="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fa fa-bolt text-accent text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">动画效果</h3>
+                        <p class="text-gray-600">包含多种平滑过渡和微动画，增强用户交互体验，使页面更具生命力。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于区域 -->
+        <section id="about" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2">
+                        <img src="https://picsum.photos/600/500" alt="关于我们" class="rounded-xl shadow-xl w-full h-auto">
+                    </div>
+                    <div class="lg:w-1/2">
+                        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-6">关于这个框架</h2>
+                        <p class="text-gray-600 mb-4">
+                            这个HTML框架是为了帮助开发者快速搭建现代网站而设计的。它集成了Tailwind CSS和Font Awesome，提供了丰富的UI组件和交互效果。
+                        </p>
+                        <p class="text-gray-600 mb-6">
+                            框架采用模块化结构，便于维护和扩展，同时注重性能优化和用户体验。无论你是开发个人博客、企业网站还是电商平台，这个框架都能满足你的需求。
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>使用语义化HTML5标签，提升可访问性和SEO</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>集成Tailwind CSS，实现快速样式开发</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>响应式设计，适配各种设备屏幕</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>丰富的动画和过渡效果，提升用户体验</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系区域 -->
+        <section id="contact" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">联系我们</h2>
+                    <p class="text-gray-600">有任何问题或建议？请填写下面的表单与我们联系</p>
+                </div>
+                
+                <div class="max-w-2xl mx-auto">
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入您的姓名" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入您的邮箱" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">主题</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入主题" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">留言</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入您的留言内容" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                            发送留言
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fa fa-comment text-primary text-2xl"></i>
+                        <spanh class="text-xl font-bold">权宜微信</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">一个现代、响应式的HTML基础框架，帮助你快速构建网站。</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i class="fa fa-github text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i class="fa fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i class="fa fa-linkedin text-xl"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">快速链接</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">功能</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">关于</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">联系</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">资源</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">文档</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">教程</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">示例</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">更新日志</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">联系我们</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa fa-envelope text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">chinafjh@126.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-phone text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">+44 0742 257 2692</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">123 High Street, Camden, LONDON, NW1 2HD, UNITED KINGDOM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 权宜个人微信. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 页面加载动画
+            setTimeout(function() {
+                const loader = document.getElementById('loader');
+                loader.classList.add('opacity-0');
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 800);
+            
+            // 移动端菜单切换
+            const menuBtn = document.getElementById('menuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            menuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                const icon = menuBtn.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+            
+            // 导航栏滚动效果
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('py-2', 'shadow-md');
+                    navbar.classList.remove('py-3', 'shadow-sm');
+                } else {
+                    navbar.classList.add('py-3', 'shadow-sm');
+                    navbar.classList.remove('py-2', 'shadow-md');
+                }
+            });
+            
+            // 返回顶部按钮
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.remove('opacity-0', 'invisible');
+                    backToTopBtn.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'invisible');
+                    backToTopBtn.classList.remove('opacity-100', 'visible');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    // 关闭移动端菜单（如果打开）
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        const icon = menuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // 表单提交处理
+            const contactForm = document.getElementById('contactForm');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // 模拟表单提交
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> 发送中...';
+                
+                setTimeout(function() {
+                    // 模拟提交成功
+                    alert('留言发送成功！我们会尽快回复您。');
+                    contactForm.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>
